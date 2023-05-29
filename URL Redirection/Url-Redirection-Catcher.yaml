@@ -11,12 +11,12 @@ requests:
       - "{{BaseURL}}"
     payloads:
       redirect:
-				- "bing.com"
+	- "bing.com"
         - "http://bing.com"
-				- "https://bing.com"
-				- "http://bing.com/%2F"
-				- "https://bing.com/%2F"
-				- "https://bing.com////"
+	- "https://bing.com"
+	- "http://bing.com/%2F"
+	- "https://bing.com/%2F"
+	- "https://bing.com////"
     fuzzing:
       - part: query
         type: replace
