@@ -14,7 +14,7 @@ requests:
     matchers:
       - type: word
         part: body
-        condition: and
+        condition: or
         words:
           - '["env"]'
           - 'Environment variables'
