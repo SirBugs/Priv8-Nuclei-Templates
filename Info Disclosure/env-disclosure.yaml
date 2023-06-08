@@ -5,7 +5,7 @@ info:
   author: SirBugs
   severity: high
   description: This Template checks disclosing secret information via /assets/env.js
-  tags: env.js
+  tags: env, env.js, js
 
 requests:
   - method: GET
