@@ -4,7 +4,7 @@ info:
   name: config.properties Disclosure
   author: SirBugs
   severity: medium
-  description: This Template checks disclosing secret information via "/config.properties"
+  description: This Template checks disclosing secret information via /config.properties
   tags: config, secrets, leaks
 
 requests:
