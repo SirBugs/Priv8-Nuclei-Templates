@@ -1,14 +1,14 @@
+---
 id: mass_48_open_redirect_check
 info:
   name: Mass 48 Param For Open Redirect
   author: SirBugs
   severity: medium
-
 requests:
   - method: GET
     path:
-			- "{{BaseURL}}/https://bing.com/"
-			- "{{BaseURL}}//https://bing.com//"
+      - "{{BaseURL}}/https://bing.com/"
+      - "{{BaseURL}}//https://bing.com//"
       - "{{BaseURL}}/?targetOrigin=https://bing.com/"
       - "{{BaseURL}}/?fallback=https://bing.com/"
       - "{{BaseURL}}/?query=https://bing.com/"
