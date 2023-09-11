@@ -5,6 +5,7 @@ info:
   author: SirBugs
   description: this xss was found by twitter@19who_am_i19 and the template made by twitter@SirBagoza
   severity: medium
+  tags: http, xss, rxss, ping
 
 requests:
   - method: GET
