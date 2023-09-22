@@ -2,7 +2,7 @@ id: etc-passwd-exposure
 
 info:
   name: /etc/passwd Exposure
-  author: yourname
+  author: SirBugs
   severity: high
   description: Checks for exposed /etc/passwd file.
 
