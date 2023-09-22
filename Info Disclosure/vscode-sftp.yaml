@@ -5,6 +5,7 @@ info:
   author: SirBugs
   severity: high
   description: Checks for exposed VSCode SFTP configuration file.
+  tags: exposure
 
 requests:
   - method: GET
