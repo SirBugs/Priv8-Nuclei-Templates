@@ -1,0 +1,21 @@
+id: config-prod-json
+
+info:
+  name: Detect exposed config.prod.json file
+  author: zakaria_ounissi
+  severity: Critical
+  description: Check for leaked api keys.
+  reference:
+    - https://twitter.com/Masonhck3571/status/1720204210363400378
+  tags: config,exposure
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/config/config.prod.json"
+      - "{{BaseURL}}/config.prod.json"
+
+    matchers:
+      - type: status
+        status:
+          - 200
